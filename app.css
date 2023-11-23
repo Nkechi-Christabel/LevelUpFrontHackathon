@@ -102,7 +102,6 @@ body {
   font-weight: 300;
   font-family: "Inter", sans-serif;
   background: #f1f1f1;
-  position: relative;
 }
 
 * {
@@ -113,6 +112,7 @@ body {
   max-width: 800px;
   margin: 0 auto;
   padding: 30px 0;
+  position: relative;
 }
 
 .sr-only {
@@ -133,7 +133,7 @@ button {
   cursor: pointer;
 }
 
-button:focus {
+button:not(.setup-guide--collapsed button):focus {
   border: 2px solid #005bd3;
 }
 
@@ -142,7 +142,8 @@ button:focus {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 10px;
+  height: 65px;
+  padding: 10px;
   background: #1a1a1a;
 }
 
@@ -223,9 +224,6 @@ input[type="search"]::-webkit-search-cancel-button {
 .initials {
   border-radius: 5px;
 }
-button.store-name-wrapper .initials {
-  visibility: visible;
-}
 
 button.store-name-wrapper {
   visibility: hidden;
@@ -236,6 +234,7 @@ button.store-name-wrapper {
 }
 
 .initials {
+  visibility: visible;
   padding: 6px;
   color: #5cc982;
   background-color: #71f6a2;
@@ -283,7 +282,7 @@ button.store-name-wrapper {
 .dropdown-pannel,
 .menu-list {
   position: absolute;
-  top: 70px;
+  top: 75px;
   right: 20px;
   background: #ffffff;
   border-radius: 15px;
@@ -306,17 +305,21 @@ button.store-name-wrapper {
 }
 
 .menu-list ul li:not(:has(p)) {
-  padding: 10px 6px;
-  margin: 0 4px;
+  padding: 8px 6px;
+  margin: 4px;
 }
 
 .menu-lists {
   cursor: pointer;
 }
-
 .menu-list ul li.menu-lists:hover:not(.active-link) {
   border-radius: 6px;
   background: #f1f1f1;
+}
+
+.menu-list ul li.menu-lists:active:not(.active-link),
+.menu-list ul li.menu-lists:focus:not(.active-link) {
+  border: 2px solid #005bd3;
 }
 
 .menu-list ul {
@@ -391,15 +394,20 @@ button.store-name-wrapper {
 
 .setup-guide .open,
 .setup-guide .close {
+  padding: 2px 3px;
+  background: #ffffff;
   cursor: pointer;
-  transition: all 0.5s ease-in;
 }
 
 .close:hover,
 .open:hover {
-  padding: 3px;
-  border-radius: 6px;
   background: #f1f1f1;
+}
+
+button.close:focus svg,
+button.open:focus svg {
+  transform: rotate(180deg);
+  transition: all 0.2s ease-in-out;
 }
 
 .setup-guide--collapsed {
@@ -444,7 +452,7 @@ button.store-name-wrapper {
 .guide-lists {
   display: block;
   padding: 7px 5px;
-  margin: 13px 0;
+  margin: 10px 0;
   border-radius: 8px;
   cursor: pointer;
 }
@@ -471,8 +479,7 @@ button.store-name-wrapper {
 }
 
 .spinner {
-  animation: spin 200ms;
-  animation-iteration-count: infinite;
+  animation: spin 250ms ease-in-out infinite;
 }
 
 .checkbox:hover circle {
@@ -558,7 +565,7 @@ hr {
 }
 
 .active-link {
-  border: 1px solid #005bd3;
+  border: 2px solid #005bd3;
   border-radius: 8px;
   background: #ffffff;
 }
