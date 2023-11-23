@@ -223,10 +223,12 @@ input[type="search"]::-webkit-search-cancel-button {
 .initials {
   border-radius: 5px;
 }
+button.store-name-wrapper .initials {
+  visibility: visible;
+}
 
 button.store-name-wrapper {
-  background: transparent;
-  border: none;
+  visibility: hidden;
 }
 
 .store-name {
@@ -469,13 +471,17 @@ button.store-name-wrapper {
 }
 
 .spinner {
-  animation: spin 400ms;
+  animation: spin 200ms;
   animation-iteration-count: infinite;
 }
 
 .checkbox:hover circle {
   stroke-dasharray: 0;
   stroke-dashoffset: 15;
+}
+
+.checkbox:focus circle {
+  stroke: #000;
 }
 
 .guide-lists--hidden {
@@ -604,6 +610,7 @@ hr {
   }
 
   button.store-name-wrapper {
+    visibility: visible;
     background-color: #303030;
     border-radius: 7px;
   }

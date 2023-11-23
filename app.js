@@ -88,13 +88,15 @@ document.addEventListener("keydown", (e) => {
 });
 
 // // Add event listener to the document
-// document.addEventListener("click", function (event) {
-//   // Check if the clicked element is not inside the dropdown
-//   if (!event.target.closest(".dropdown-pannel")) {
-//     // Close the dropdown
-//     dropdownPannel.classList.add("hidden");
-//   }
-// });
+document.addEventListener("click", function (event) {
+  // Check if the clicked element is not inside the dropdown
+  if (!event.target.closest(".dropdown-pannel")) {
+    // Close the dropdown
+    if (dropdownPannel) {
+      dropdownPannel.classList.add("hidden");
+    }
+  }
+});
 
 //Close select plan trial
 cancel.addEventListener("click", () => {
@@ -207,9 +209,6 @@ function handleChecked(check, e) {
   // Show the spinner
   toggleElementsVisibility();
 
-  // Handle progress and hidden steps
-
-  // After a delay, hide the spinner and show/hide the empty checkbox and check mark based on checked state
   setTimeout(() => {
     spinner.classList.add("hidden");
     emptyCheckbox.classList.toggle("hidden", !isChecked);
