@@ -87,6 +87,15 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
+// // Add event listener to the document
+// document.addEventListener("click", function (event) {
+//   // Check if the clicked element is not inside the dropdown
+//   if (!event.target.closest(".dropdown-pannel")) {
+//     // Close the dropdown
+//     dropdownPannel.classList.add("hidden");
+//   }
+// });
+
 //Close select plan trial
 cancel.addEventListener("click", () => {
   selectPlan.classList.add("hidden");

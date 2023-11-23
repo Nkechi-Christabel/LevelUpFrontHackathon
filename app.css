@@ -102,6 +102,7 @@ body {
   font-weight: 300;
   font-family: "Inter", sans-serif;
   background: #f1f1f1;
+  position: relative;
 }
 
 * {
@@ -112,7 +113,6 @@ body {
   max-width: 800px;
   margin: 0 auto;
   padding: 30px 0;
-  position: relative;
 }
 
 .sr-only {
@@ -129,6 +129,7 @@ body {
 
 button {
   border: none;
+  border-radius: 5px;
   cursor: pointer;
 }
 
@@ -145,15 +146,15 @@ button:focus {
   background: #1a1a1a;
 }
 
-.header nav button:hover {
+.header nav button:not(.dropdown-pannel button):hover {
   background: #616161;
 }
 
-.header nav button:active {
+.header nav button:not(.dropdown-pannel button):active {
   background: #656266;
 }
 
-.header nav button:focus {
+.header nav button:not(.dropdown-pannel button):focus {
   background: #656266;
 }
 
@@ -255,6 +256,11 @@ button.store-name-wrapper {
   font-weight: 500;
 }
 
+.dropdown-pannel button {
+  padding: 3 4px;
+  background: #ffff;
+}
+
 .dropdown-pannel p {
   flex: 0 0 100%;
   padding: 10px;
@@ -265,10 +271,6 @@ button.store-name-wrapper {
 .dropdown-pannel p,
 .menu-list .name {
   background: #f1f1f1;
-}
-
-.dropdown-pannel svg {
-  margin-left: 10px;
 }
 
 .menu-list {
@@ -390,6 +392,7 @@ button.store-name-wrapper {
   cursor: pointer;
   transition: all 0.5s ease-in;
 }
+
 .close:hover,
 .open:hover {
   padding: 3px;
@@ -470,9 +473,9 @@ button.store-name-wrapper {
   animation-iteration-count: infinite;
 }
 
-.checkbox:hover {
-  animation: spin 200ms;
-  animation-iteration-count: infinite;
+.checkbox:hover circle {
+  stroke-dasharray: 0;
+  stroke-dashoffset: 15;
 }
 
 .guide-lists--hidden {
@@ -529,7 +532,7 @@ button.store-name-wrapper {
   color: #404040;
   padding: 8px;
   margin-left: 15px;
-  border-radius: 4px;
+  border-radius: 5px;
 }
 
 .product-btns--white:hover {
@@ -549,6 +552,7 @@ hr {
 }
 
 .active-link {
+  border: 1px solid #005bd3;
   border-radius: 8px;
   background: #ffffff;
 }
@@ -632,6 +636,10 @@ hr {
     flex: 1;
   }
 
+  .dropdown-pannel {
+    width: 400px;
+  }
+
   .menu-list .check-mark {
     margin-left: 130px;
   }
@@ -664,6 +672,10 @@ hr {
 }
 
 @media screen and (max-width: 600px) {
+  /* .menu-list {
+    min-width: 250px;
+  } */
+
   .select-plan {
     flex-wrap: wrap;
   }
