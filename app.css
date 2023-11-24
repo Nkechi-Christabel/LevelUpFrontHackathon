@@ -98,10 +98,11 @@ ul {
 
 body {
   line-height: 1;
-  font-size: 0.85rem;
+  font-size: 13px;
   font-weight: 300;
   font-family: "Inter", sans-serif;
   background: #f1f1f1;
+  position: relative;
 }
 
 * {
@@ -112,7 +113,6 @@ body {
   max-width: 800px;
   margin: 0 auto;
   padding: 30px 0;
-  position: relative;
 }
 
 .sr-only {
@@ -317,11 +317,6 @@ button.store-name-wrapper {
   background: #f1f1f1;
 }
 
-.menu-list ul li.menu-lists:active:not(.active-link),
-.menu-list ul li.menu-lists:focus:not(.active-link) {
-  border: 2px solid #005bd3;
-}
-
 .menu-list ul {
   background: #ffffff;
 }
@@ -330,7 +325,6 @@ button.store-name-wrapper {
   padding: 9px 6px;
   margin: 6px 4px;
   border-radius: 6px;
-  font-weight: 400;
 }
 
 .menu-list .all-stores {
@@ -339,7 +333,7 @@ button.store-name-wrapper {
 
 .menu-list .email-name,
 .menu-list .name {
-  font-weight: 500;
+  font-weight: normal;
 }
 
 .menu-list .email {
@@ -356,7 +350,7 @@ button.store-name-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 11px 14px;
+  padding: 11px 12px;
   color: #cacaca;
   background: #1a1a1a;
 }
@@ -380,9 +374,10 @@ button.store-name-wrapper {
   background: #f7f7f7;
 }
 
-.select-plan svg {
+.select-plan .cancel {
   cursor: pointer;
-  margin-right: 6px;
+  padding: 0 4px;
+  margin-right: 2px;
 }
 
 .setup-guide {
@@ -414,7 +409,7 @@ button.open:focus svg {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  padding: 10px;
+  padding: 8px;
 }
 
 .setup-guide--collapsed h4 {
@@ -479,7 +474,7 @@ button.open:focus svg {
 }
 
 .spinner {
-  animation: spin 250ms ease-in-out infinite;
+  animation: spin 150ms infinite;
 }
 
 .checkbox:hover circle {
@@ -487,13 +482,17 @@ button.open:focus svg {
   stroke-dashoffset: 15;
 }
 
-.checkbox:focus circle {
-  stroke: #000;
-}
-
 .guide-lists--hidden {
   display: flex;
   justify-content: space-between;
+}
+
+.guide-lists--hidden > div {
+  margin: 0 30px;
+}
+
+.guide-lists h5 {
+  font-weight: 400;
 }
 
 .guide-lists--hidden p {
@@ -585,10 +584,10 @@ hr {
 
 @keyframes drop-in {
   0% {
-    top: 0px;
+    right: 0px;
   }
   100% {
-    top: 100px;
+    right: 20px;
   }
 }
 
@@ -670,10 +669,6 @@ hr {
     display: block;
   }
 
-  .guide-lists--hidden > div {
-    margin: 0 30px;
-  }
-
   .guide-lists--hidden p {
     padding: 10px 55px 15px 0;
     color: #616161;
@@ -685,11 +680,13 @@ hr {
   }
 }
 
-@media screen and (max-width: 600px) {
-  /* .menu-list {
-    min-width: 250px;
-  } */
+@media screen and (min-width: 340px) {
+  .menu-list {
+    min-width: 300px;
+  }
+}
 
+@media screen and (max-width: 600px) {
   .select-plan {
     flex-wrap: wrap;
   }
@@ -701,5 +698,9 @@ hr {
 
   .select-plan button {
     margin-top: 12px;
+  }
+
+  .guide-lists--hidden > div {
+    margin: 0 20px 0 30px;
   }
 }
