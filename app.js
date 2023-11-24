@@ -162,7 +162,7 @@ guideLists.forEach((list) => {
     handleListDisplay(list);
   });
 
-  // Handle keydown Enter event to display guides list content
+  // Handle keydown event to display guides list content
   list.addEventListener("keydown", (e) => {
     const currentIndex = Array.from(guideLists).indexOf(document.activeElement);
     removeActiveClass(guideLists);
