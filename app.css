@@ -133,7 +133,7 @@ button {
   cursor: pointer;
 }
 
-.initials,
+.store-name-wrapper .initials,
 button:not(.setup-guide--collapsed button):focus {
   outline: 2px solid #005bd3;
 }
