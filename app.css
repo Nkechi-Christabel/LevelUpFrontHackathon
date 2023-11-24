@@ -133,8 +133,9 @@ button {
   cursor: pointer;
 }
 
+.initials,
 button:not(.setup-guide--collapsed button):focus {
-  border: 2px solid #005bd3;
+  outline: 2px solid #005bd3;
 }
 
 /* Header */
@@ -613,9 +614,12 @@ hr {
 
   .initials {
     margin: 3px;
+    outline: none;
   }
 
   button.store-name-wrapper {
+    display: flex;
+    align-items: center;
     visibility: visible;
     background-color: #303030;
     border-radius: 7px;

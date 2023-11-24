@@ -64,7 +64,6 @@ notification.addEventListener("keydown", (e) => {
 // Event listener to toggle menu list
 storeName.addEventListener("click", () => {
   toggleMenuList();
-
   links[0].focus();
   addActiveClass(links[0]);
 });
