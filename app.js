@@ -186,7 +186,7 @@ guideLists.forEach((list) => {
   list.setAttribute("tabindex", "0");
 });
 
-// Function to handle progress
+// Handles the progress bar
 function handleProgress() {
   const qtyCompleted = document.querySelector(".qty-completed");
   const progressFill = document.querySelector(".progress-bar-fill");
@@ -200,7 +200,7 @@ function handleProgress() {
   progressFill.style.width = `${percentage}%`;
 }
 
-// Function to handle checking and unchecking of the circle box
+// Handles checking and unchecking of the circle checkbox
 function handleChecked(check, e) {
   e.preventDefault();
   e.stopPropagation();
@@ -239,11 +239,13 @@ function handleChecked(check, e) {
   }, 200);
 }
 
+//Click even for the circle checkboxes
 checkMarks.forEach((check) => {
   check.addEventListener("click", (e) => {
     handleChecked(check, e);
   });
 
+  //Keydown event for the circle checkboxes
   check.addEventListener("keydown", (e) => {
     if (e.key === "Enter") handleChecked(check, e);
   });
