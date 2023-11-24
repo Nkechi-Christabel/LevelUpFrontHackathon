@@ -63,6 +63,7 @@ notification.addEventListener("keydown", (e) => {
 
 // Event listener to toggle menu list
 storeName.addEventListener("click", () => {
+  removeActiveClass(links)
   toggleMenuList();
   links[0].focus();
   addActiveClass(links[0]);
@@ -87,7 +88,7 @@ menuList.addEventListener("keydown", (e) => {
     links[currentIndex - 1].focus();
   } else if (e.key === "Enter") {
     window.open(e.target.querySelector("a").getAttribute("href"), "_blank");
-    e.target.classList.add("active-link");
+    addActiveClass(e.target);
   }
 });
 
