@@ -82,13 +82,13 @@ storeName.addEventListener("keydown", (e) => {
 menuList.addEventListener("keydown", (e) => {
   const currentIndex = Array.from(links).indexOf(document.activeElement);
   removeActiveClass(links);
-  console.log(e.target);
   if (e.key === "ArrowDown" && currentIndex < links.length - 1) {
     links[currentIndex + 1].focus();
   } else if (e.key === "ArrowUp" && currentIndex > 0) {
     links[currentIndex - 1].focus();
   } else if (e.key === "Enter") {
     window.open(e.target.querySelector("a").getAttribute("href"), "_blank");
+    e.target.classList.add("active-link");
   }
 });
 
