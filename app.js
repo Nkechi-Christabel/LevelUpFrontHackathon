@@ -280,9 +280,17 @@ checkMarks.forEach((check) => {
 // Close notification panel and menu-list at the press of the escape key
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
+    links[0].blur();
     notificationDropdownPanel.classList.remove("active");
     profileMenu.classList.add("hidden");
-    storeName.focus();
+
+    if (document.activeElement.classList.contains("body")) {
+      if (window.matchMedia("(max-width: 912px)")) {
+        storeName.querySelector(".initials").focus();
+      }
+
+      storeName.focus();
+    }
   }
 });
 
