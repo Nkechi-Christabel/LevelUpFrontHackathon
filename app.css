@@ -310,11 +310,11 @@ button.store-name-wrapper {
 }
 
 .profileMenu-list,
-.profileMenu-list ul li a {
+.profileMenu-list li a {
   color: #475467;
 }
 
-.profileMenu-list ul li:not(:has(p)) {
+.profileMenu-list li:not(:has(p)) {
   padding: 8px 6px;
   margin: 4px;
 }
@@ -322,12 +322,13 @@ button.store-name-wrapper {
 .profileMenu-lists {
   cursor: pointer;
 }
-.profileMenu-list ul li.profileMenu-lists:hover:not(.active-link) {
+
+.profileMenu-list li.profileMenu-lists:hover:not(.active-link) {
   border-radius: 6px;
   background: #f1f1f1;
 }
 
-.profileMenu-list ul {
+.profileMenu-list {
   background: #ffffff;
 }
 

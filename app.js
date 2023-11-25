@@ -260,7 +260,7 @@ function handleChecked(check, e) {
     spinner.classList.add("hidden");
     emptyCheckbox.classList.toggle("hidden", !isChecked);
     checkMark.classList.toggle("hidden", isChecked);
-  }, 200);
+  }, 150);
 }
 
 //Click even for the circle checkboxes
