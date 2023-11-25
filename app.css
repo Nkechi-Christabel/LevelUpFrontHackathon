@@ -101,7 +101,6 @@ body {
   font-weight: 300;
   font-family: "Inter", sans-serif;
   background: #f1f1f1;
-  position: relative;
 }
 
 * {
@@ -112,6 +111,7 @@ body {
   max-width: 800px;
   margin: 0 auto;
   padding: 30px 0;
+  position: relative;
 }
 
 .sr-only {
@@ -307,7 +307,7 @@ button.store-name-wrapper {
 
 .profileMenu-list,
 .profileMenu-list ul li a {
-  color: #475447;
+  color: #475467;
 }
 
 .profileMenu-list ul li:not(:has(p)) {
@@ -503,7 +503,8 @@ button.open:focus svg {
 
 .guide-lists--hidden p {
   padding: 10px 0 15px 0;
-  color: #475447;
+  color: #475467;
+  font-weight: 400;
 }
 
 .guide-lists--hidden img {
