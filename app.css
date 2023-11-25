@@ -267,6 +267,10 @@ button.store-name-wrapper {
   background: #ffff;
 }
 
+.notification-dropdown .filter-icon {
+  margin-right: 3px;
+}
+
 .notification-dropdown p {
   flex: 0 0 100%;
   padding: 10px;

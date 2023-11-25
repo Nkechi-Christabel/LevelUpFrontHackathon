@@ -45,7 +45,7 @@
             </button>
             <div class="notification-dropdown hidden" id="notification" role="notification" aria-label="Dropdown panel">
               <h4>Alerts</h4>
-              <button aria-label="Filter icon" role="pannelitem">
+              <button aria-label="Filter icon" role="pannelitem" class="filter-icon">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M3 6C3 5.58579 3.33579 5.25 3.75 5.25H16.25C16.6642 5.25 17 5.58579 17 6C17 6.41421 16.6642 6.75 16.25 6.75H3.75C3.33579 6.75 3 6.41421 3 6Z"
@@ -183,10 +183,10 @@
             <p>Use this personalized guide to get your store up and running.</p>
 
             <p class="progress">
-              <span class="qty-completed">0</span>
-              / <span class="guideList-len"></span> completed
+              <span class="qty-completed" aria-label="Number of completed guides">0</span>
+              / <span class="guideList-len" arial-label="Number of guides"></span> completed
               <span class="progress-bar" aria-label="Progress bar">
-                <span class="progress-bar-fill"></span>
+                <span class="progress-bar-fill" aria-label="progress bar fill"></span>
               </span>
             </p>
           </div>
