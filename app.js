@@ -1,14 +1,17 @@
 const notification = document.querySelector(".notification-bell");
-const notificationDropdownPannel = document.querySelector(".dropdown-pannel");
+const notificationDropdownPanel = document.querySelector(
+  ".notification-dropdown"
+);
 const storeName = document.querySelector(".store-name-wrapper");
-const menuList = document.querySelector(".menu-list");
+const initials = storeName.querySelector(".initials");
+const profileMenu = document.querySelector(".profileMenu-list");
 const cancel = document.querySelector(".cancel");
 const selectPlan = document.querySelector(".select-plan");
 const openGuides = document.querySelector(".open");
 const closeGuides = document.querySelector(".close");
 const guides = document.querySelector(".guides");
 const guideLists = document.querySelectorAll(".guide-lists");
-const links = document.querySelectorAll(".menu-lists");
+const links = document.querySelectorAll(".profileMenu-lists");
 const checkMarks = document.querySelectorAll(".check");
 const body = document.querySelector(".body");
 const guideListLen = document.querySelector(".guideList-len");
@@ -39,32 +42,39 @@ links.forEach((link) => {
   });
 });
 
-// Function to toggle notificationDropdownPannel
-function togglenotificationDropdownPannel() {
-  menuList.classList.add("hidden");
-  notificationDropdownPannel.classList.toggle("active");
+// Function to toggle notificationDropdownPanel
+function togglenotificationDropdownPanel() {
+  profileMenu.classList.add("hidden");
+  notificationDropdownPanel.classList.toggle("active");
+
+  const isContentHidden =
+    notificationDropdownPanel.classList.contains("active");
+  notification.setAttribute("aria-expanded", isContentHidden);
 }
 
-// Function to toggle menuList
-function toggleMenuList() {
-  notificationDropdownPannel.classList.remove("active");
-  menuList.classList.toggle("hidden");
+// Function to toggle profileMenu
+function toggleprofileMenu() {
+  notificationDropdownPanel.classList.remove("active");
+  profileMenu.classList.toggle("hidden");
+
+  const isContentHidden = profileMenu.classList.contains("hidden");
+  storeName.setAttribute("aria-expanded", !isContentHidden);
 }
 
-// Event listener to toggle notification pannel
-notification.addEventListener("click", togglenotificationDropdownPannel);
+// Event listener to toggle notification panel
+notification.addEventListener("click", togglenotificationDropdownPanel);
 
-//Keyboard Event listener to toggle  notification pannel
+//Keyboard Event listener to toggle  notification panel
 notification.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
-    togglenotificationDropdownPannel;
+    togglenotificationDropdownPanel;
   }
 });
 
 // Event listener to toggle menu list
 storeName.addEventListener("click", () => {
-  removeActiveClass(links)
-  toggleMenuList();
+  removeActiveClass(links);
+  toggleprofileMenu();
   links[0].focus();
   addActiveClass(links[0]);
 });
@@ -72,38 +82,35 @@ storeName.addEventListener("click", () => {
 //Keyboard Event listener to toggle menu list
 storeName.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
-    toggleMenuList();
+    toggleprofileMenu();
     links[0].focus();
     addActiveClass(links[0]);
   }
 });
 
 // Event listener to handle keyboard navigation
-menuList.addEventListener("keydown", (e) => {
-  const currentIndex = Array.from(links).indexOf(document.activeElement);
+profileMenu.addEventListener("keydown", (e) => {
+  let currentIndex = Array.from(links).indexOf(document.activeElement);
   removeActiveClass(links);
   if (e.key === "ArrowDown" && currentIndex < links.length - 1) {
     links[currentIndex + 1].focus();
   } else if (e.key === "ArrowUp" && currentIndex > 0) {
     links[currentIndex - 1].focus();
+  } else if (e.key === "ArrowRight") {
+    currentIndex = (currentIndex + 1) % links.length;
+    links[currentIndex].focus();
+  } else if (e.key === "ArrowLeft") {
+    currentIndex = (currentIndex - 1 + links.length) % links.length;
+    links[currentIndex].focus();
+  } else if (e.key === "Home") {
+    links[0].focus();
+  } else if (e.key === "End") {
+    links[links.length - 1].focus();
   } else if (e.key === "Enter") {
     window.open(e.target.querySelector("a").getAttribute("href"), "_blank");
     addActiveClass(e.target);
   }
 });
-
-// Functions to handle guide card display
-function handleGuideDisplay() {
-  openGuides.classList.add("hidden");
-  closeGuides.classList.remove("hidden");
-  guides.classList.remove("hidden");
-}
-
-function handleHideGuides() {
-  closeGuides.classList.add("hidden");
-  openGuides.classList.remove("hidden");
-  guides.classList.add("hidden");
-}
 
 // Function to handle hidden steps
 function handleHiddenSteps(list) {
@@ -133,6 +140,19 @@ function handleListDisplay(clickedList) {
   if (hiddenContent && hiddenContent.classList.contains("hidden")) {
     handleHiddenSteps(clickedList);
   }
+}
+
+// Functions to handle guide card display
+function handleGuideDisplay() {
+  openGuides.classList.add("hidden");
+  closeGuides.classList.remove("hidden");
+  guides.classList.remove("hidden");
+}
+
+function handleHideGuides() {
+  closeGuides.classList.add("hidden");
+  openGuides.classList.remove("hidden");
+  guides.classList.add("hidden");
 }
 
 // Open guide card
@@ -165,22 +185,25 @@ guideLists.forEach((list) => {
 
   // Handle keydown event to display guides list content
   list.addEventListener("keydown", (e) => {
-    const currentIndex = Array.from(guideLists).indexOf(document.activeElement);
+    let currentIndex = Array.from(guideLists).indexOf(document.activeElement);
     removeActiveClass(guideLists);
 
-    switch (e.key) {
-      case "ArrowDown":
-        const nextIndex = (currentIndex + 1) % guideLists.length;
-        guideLists[nextIndex].focus();
-        break;
-      case "ArrowUp":
-        const prevIndex =
-          (currentIndex - 1 + guideLists.length) % guideLists.length;
-        guideLists[prevIndex].focus();
-        break;
-      case "Enter":
-        handleListDisplay(list);
-        break;
+    if (e.key === "ArrowDown" && currentIndex < guideLists.length - 1) {
+      guideLists[currentIndex + 1].focus();
+    } else if (e.key === "ArrowUp" && currentIndex > 0) {
+      guideLists[currentIndex - 1].focus();
+    } else if (e.key === "ArrowRight") {
+      currentIndex = (currentIndex + 1) % guideLists.length;
+      guideLists[currentIndex].focus();
+    } else if (e.key === "ArrowLeft") {
+      currentIndex = (currentIndex - 1 + guideLists.length) % guideLists.length;
+      guideLists[currentIndex].focus();
+    } else if (e.key === "Home") {
+      guideLists[0].focus();
+    } else if (e.key === "End") {
+      guideLists[guideLists.length - 1].focus();
+    } else if (e.key === "Enter") {
+      handleListDisplay(list);
     }
   });
   // Ensure the list items are focusable
@@ -257,15 +280,16 @@ checkMarks.forEach((check) => {
 // Close notification panel and menu-list at the press of the escape key
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
-    notificationDropdownPannel.classList.remove("active");
-    menuList.classList.add("hidden");
+    notificationDropdownPanel.classList.remove("active");
+    profileMenu.classList.add("hidden");
+    storeName.focus();
   }
 });
 
 // Close notification panel and menu-list on click outside
 document.addEventListener("click", (e) => {
   if (!e.target.closest(".notification"))
-    notificationDropdownPannel.classList.remove("active");
+    notificationDropdownPanel.classList.remove("active");
 
-  if (!e.target.closest(".store")) menuList.classList.add("hidden");
+  if (!e.target.closest(".store")) profileMenu.classList.add("hidden");
 });

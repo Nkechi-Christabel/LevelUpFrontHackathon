@@ -70,7 +70,6 @@ footer,
 header,
 hgroup,
 menu,
-nav,
 output,
 ruby,
 section,
@@ -133,7 +132,7 @@ button {
   cursor: pointer;
 }
 
-.store-name-wrapper .initials,
+.store-name-wrapper .initials:focus,
 button:not(.setup-guide--collapsed button):focus {
   outline: 2px solid #005bd3;
 }
@@ -148,15 +147,15 @@ button:not(.setup-guide--collapsed button):focus {
   background: #1a1a1a;
 }
 
-.header nav button:not(.dropdown-pannel button):hover {
+.header nav button:not(.notification-dropdown button):hover {
   background: #616161;
 }
 
-.header nav button:not(.dropdown-pannel button):active {
+.header nav button:not(.notification-dropdown button):active {
   background: #656266;
 }
 
-.header nav button:not(.dropdown-pannel button):focus {
+.header nav button:not(.notification-dropdown button):focus {
   background: #656266;
 }
 
@@ -209,10 +208,11 @@ input[type="search"]::-webkit-search-cancel-button {
   display: flex;
   justify-content: end;
   align-items: center;
+  align-content: center;
 }
 
 .notification-bell {
-  padding: 6px;
+  padding: 7px;
   margin-right: 5px;
   background-color: #303030;
 }
@@ -236,12 +236,16 @@ button.store-name-wrapper {
 
 .initials {
   visibility: visible;
-  padding: 6px;
+  padding: 7px;
   color: #5cc982;
   background-color: #71f6a2;
 }
 
-.dropdown-pannel {
+.store-name-wrapper .initials {
+  display: inline-block;
+}
+
+.notification-dropdown {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
@@ -249,39 +253,39 @@ button.store-name-wrapper {
   animation: drop-in 200ms;
 }
 
-.dropdown-pannel.active {
+.notification-dropdown.active {
   display: flex;
 }
 
-.dropdown-pannel h4 {
+.notification-dropdown h4 {
   flex: 1;
   font-weight: 500;
 }
 
-.dropdown-pannel button {
+.notification-dropdown button {
   padding: 3 4px;
   background: #ffff;
 }
 
-.dropdown-pannel p {
+.notification-dropdown p {
   flex: 0 0 100%;
   padding: 10px;
   margin: 15px 0 8px 0;
   border-radius: 3px;
 }
 
-.dropdown-pannel p,
-.menu-list .name {
+.notification-dropdown p,
+.profileMenu-list .name {
   background: #f1f1f1;
 }
 
-.menu-list {
+.profileMenu-list {
   overflow: hidden;
   animation: drop-in 200ms;
 }
 
-.dropdown-pannel,
-.menu-list {
+.notification-dropdown,
+.profileMenu-list {
   position: absolute;
   top: 75px;
   right: 20px;
@@ -291,54 +295,54 @@ button.store-name-wrapper {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
-.menu-list .initials {
+.profileMenu-list .initials {
   margin: 0 4px 0 0;
+  outline: none;
 }
 
-.menu-list .check-mark {
+.profileMenu-list .check-mark {
   display: inline-block;
   margin-left: 130px;
 }
 
-.menu-list,
-.menu-list ul li a {
-  color: #303030;
+.profileMenu-list,
+.profileMenu-list ul li a {
+  color: #475447;
 }
 
-.menu-list ul li:not(:has(p)) {
+.profileMenu-list ul li:not(:has(p)) {
   padding: 8px 6px;
   margin: 4px;
 }
 
-.menu-lists {
+.profileMenu-lists {
   cursor: pointer;
 }
-
-.menu-list ul li.menu-lists:hover:not(.active-link) {
+.profileMenu-list ul li.profileMenu-lists:hover:not(.active-link) {
   border-radius: 6px;
   background: #f1f1f1;
 }
 
-.menu-list ul {
+.profileMenu-list ul {
   background: #ffffff;
 }
 
-.menu-list .name {
+.profileMenu-list .name {
   padding: 9px 6px;
   margin: 6px 4px;
   border-radius: 6px;
 }
 
-.menu-list .all-stores {
+.profileMenu-list .all-stores {
   padding: 6px;
 }
 
-.menu-list .email-name,
-.menu-list .name {
+.profileMenu-list .email-name,
+.profileMenu-list .name {
   font-weight: normal;
 }
 
-.menu-list .email {
+.profileMenu-list .email {
   font-size: 0.8rem;
   display: block;
 }
@@ -499,7 +503,7 @@ button.open:focus svg {
 
 .guide-lists--hidden p {
   padding: 10px 0 15px 0;
-  color: #616161;
+  color: #475447;
 }
 
 .guide-lists--hidden img {
@@ -613,14 +617,11 @@ hr {
     margin-right: 5px;
   }
 
-  .initials {
-    margin: 3px;
+  .store-name-wrapper .initials {
     outline: none;
   }
 
   button.store-name-wrapper {
-    display: flex;
-    align-items: center;
     visibility: visible;
     background-color: #303030;
     border-radius: 7px;
@@ -654,7 +655,7 @@ hr {
     flex: 1;
   }
 
-  .dropdown-pannel {
+  .notification-dropdown {
     width: 400px;
   }
 
@@ -672,7 +673,6 @@ hr {
 
   .guide-lists--hidden p {
     padding: 10px 55px 15px 0;
-    color: #616161;
   }
 
   .guide-lists--hidden img {
@@ -682,7 +682,7 @@ hr {
 }
 
 @media screen and (min-width: 340px) {
-  .menu-list {
+  .profileMenu-list {
     min-width: 300px;
   }
 }
