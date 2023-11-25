@@ -250,7 +250,7 @@ button.store-name-wrapper {
   align-items: center;
   flex-wrap: wrap;
   padding: 10px;
-  animation: drop-in 200ms;
+  animation: slide-in 300ms;
 }
 
 .notification-dropdown.active {
@@ -281,7 +281,7 @@ button.store-name-wrapper {
 
 .profileMenu-list {
   overflow: hidden;
-  animation: drop-in 200ms;
+  animation: slide-in 300ms;
 }
 
 .notification-dropdown,
@@ -589,7 +589,7 @@ hr {
   }
 }
 
-@keyframes drop-in {
+@keyframes slide-in {
   0% {
     right: 0px;
   }
