@@ -90,6 +90,7 @@ profileMenuTrigger.addEventListener("keydown", (e) => {
 // Event listener to handle keyboard navigation
 profileMenu.addEventListener("keydown", (e) => {
   removeActiveClass(links);
+  console.log(e.target);
   handleKeyboardNavigation(links, null, e);
 });
 
@@ -116,7 +117,9 @@ function handleKeyboardNavigation(lists, functionName, e) {
       window.open(e.target.querySelector("a").getAttribute("href"), "_blank");
       addActiveClass(e.target);
     } else {
-      functionName(e.target);
+      functionName.name === "handleChecked"
+        ? functionName(e.target, e)
+        : functionName(e.target);
     }
   }
 }
@@ -230,11 +233,6 @@ function handleChecked(check, e) {
   const emptyCheckbox = check.querySelector(".checkbox");
   const checkMark = check.querySelector(".checked-icon");
   const guide = listItem.querySelector("h5");
-  const checkboxStatus = check.querySelector(".checkbox-status");
-
-  check.classList.toggle("checked");
-  checkMark.classList.remove("hidden");
-  handleProgress();
 
   function toggleElementsVisibility() {
     spinner.classList.remove("hidden");
@@ -251,21 +249,27 @@ function handleChecked(check, e) {
 
   toggleElementsVisibility();
 
-  const isChecked = check.classList.contains("checked");
-  check.setAttribute("aria-checked", isChecked.toString());
+  const isChecked = check.classList.toggle("checked");
 
-  setTimeout(() => {
+  const handleTimeout = () => {
     check.setAttribute(
       "aria-label",
       isChecked
-        ? `${guide.innerHTML} successfully checked`
+        ? `${guide.innerHTML} is successfully checked`
         : `${guide.innerHTML} is unchecked`
     );
 
-    spinner.classList.add("hidden");
-    emptyCheckbox.classList.toggle("hidden", isChecked);
-    checkMark.classList.toggle("hidden", !isChecked);
-  }, 500);
+    // Adds a delay before hiding the spinner and showing other elements
+    setTimeout(() => {
+      spinner.classList.add("hidden");
+      emptyCheckbox.classList.toggle("hidden", isChecked);
+      checkMark.classList.toggle("hidden", !isChecked);
+
+      handleProgress();
+    }, 1000);
+  };
+
+  requestAnimationFrame(handleTimeout);
 }
 
 //Click even for the circle checkboxes
