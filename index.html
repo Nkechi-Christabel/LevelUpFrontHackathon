@@ -10,7 +10,7 @@
     <title>Shopify Onboarding Dashboard - Hackathon</title>
   </head>
 
-  <body class="body">
+  <body>
     <header class="header">
       <nav>
         <div class="logo">
@@ -77,13 +77,13 @@
           </div>
           <div class="store">
             <button class="store-name-wrapper" id="menubutton" aria-controls="menu" aria-haspopup="true"
-              aria-expanded="false">
+              aria-expanded="false" tabindex="0">
               <span class="store-name">Davii Collections</span>
-              <span class="initials">DC</span>
+              <span class="initials" tabindex="0">DC</span>
             </button>
             <ul class="profileMenu-list hidden" id="menu" role="menu" aria-label="Profile menu list">
-              <li role="presentation" class="disabled li1">
-                <p class="name" role="menuitem">
+              <li role="presentation" class="disabled">
+                <p class="name">
                   <span class="initials">DC</span>
                   <span>Davii Collections</span>
                   <span class="check-mark" aria-hidden="true">
@@ -157,7 +157,7 @@
               Select a plan
             </a>
           </div>
-          <button class="cancel" aria-label="Cancel trial">
+          <button class="cancel" aria-label="Dismiss trial call out">
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M9.96967 11.0303C10.2626 11.3232 10.7374 11.3232 11.0303 11.0303C11.3232 10.7374 11.3232 10.2626 11.0303 9.96967L7.06066 6L11.0303 2.03033C11.3232 1.73744 11.3232 1.26256 11.0303 0.96967C10.7374 0.676777 10.2626 0.676777 9.96967 0.96967L6 4.93934L2.03033 0.96967C1.73744 0.676777 1.26256 0.676777 0.96967 0.96967C0.676777 1.26256 0.676777 1.73744 0.96967 2.03033L4.93934 6L0.96967 9.96967C0.676777 10.2626 0.676777 10.7374 0.96967 11.0303C1.26256 11.3232 1.73744 11.3232 2.03033 11.0303L6 7.06066L9.96967 11.0303Z"
@@ -170,7 +170,7 @@
             <div class="setupCancel-wrapper">
               <h4>Setup guide</h4>
               <button class="hidden close" tabindex="0" aria-expanded="true" aria-label="Close button"
-                aria-controls="guidelist">
+                aria-controls="menu">
                 <svg width="20" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg"
                   aria-label="Close icon">
                   <path fill-rule="evenodd" clip-rule="evenodd"
@@ -178,7 +178,7 @@
                     fill="#4A4A4A" />
                 </svg>
               </button>
-              <button class="open" tabindex="0" aria-expanded="false" aria-label="Open button" aria-controls="guides">
+              <button class="open" tabindex="0" aria-expanded="false" aria-label="Open button" aria-controls="menu">
                 <svg width="20" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg"
                   aria-label="Open icon">
                   <path fill-rule="evenodd" clip-rule="evenodd"
@@ -199,10 +199,9 @@
               </svg>
             </p>
           </div>
-          <ul class="guides hidden" role="guidelist" id="guides" aria-label="Step guides">
-            <li class="guide-lists" aria-label="Click to display">
-              <button class="check" role="checkbox" aria-checked="false" aria-label="Click to check">
-                <span class="checkbox-status" aria-live="polite"></span>
+          <ul class="guides hidden" role="menu" id="guides" aria-label="Step guides">
+            <li class="guide-lists" aria-label="Click or press to display details">
+              <button class="check" aria-label="Click to check this guide" aria-checked="false" role="checkbox">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                   class="checkbox" aria-hidden="true">
                   <circle cx="12" cy="12" r="10" stroke="#8A8A8A" stroke-width="2.08333" stroke-linecap="round"
@@ -241,9 +240,8 @@
                 </div>
               </div>
             </li>
-            <li class="guide-lists" aria-label="Click to display">
-              <button class="check" role="checkbox" aria-checked="false" aria-label="Click to check">
-                <span class="checkbox-status" aria-live="polite"></span>
+            <li class="guide-lists" aria-label="Click or press to display details">
+              <button class="check" aria-label="Click to check this guide" aria-checked="false" role="checkbox">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                   class="checkbox" aria-hidden="true">
                   <circle cx="12" cy="12" r="10" stroke="#8A8A8A" stroke-width="2.08333" stroke-linecap="round"
@@ -283,9 +281,8 @@
                 </div>
               </div>
             </li>
-            <li class="guide-lists" aria-label="Click to display">
-              <button class="check" role="checkbox" aria-checked="false" aria-label="Click to check">
-                <span class="checkbox-status" aria-live="polite"></span>
+            <li class="guide-lists" aria-label="Click or press to display details">
+              <button class="check" aria-label="Click to check this guide" aria-checked="false" role="checkbox">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                   class="checkbox" aria-hidden="true">
                   <circle cx="12" cy="12" r="10" stroke="#8A8A8A" stroke-width="2.08333" stroke-linecap="round"
@@ -323,9 +320,8 @@
                 </div>
               </div>
             </li>
-            <li class="guide-lists" aria-label="Click to display">
-              <button class="check" role="checkbox" aria-checked="false" aria-label="Click to check">
-                <span class="checkbox-status" aria-live="polite"></span>
+            <li class="guide-lists" aria-label="Click or press to display details">
+              <button class="check" aria-label="Click to check this guide" aria-checked="false" role="checkbox">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                   class="checkbox" aria-hidden="true">
                   <circle cx="12" cy="12" r="10" stroke="#8A8A8A" stroke-width="2.08333" stroke-linecap="round"
@@ -363,9 +359,8 @@
                 </div>
               </div>
             </li>
-            <li class="guide-lists" aria-label="Click to display">
-              <button class="check" role="checkbox" aria-checked="false" aria-label="Click to check">
-                <span class="checkbox-status" aria-live="polite"></span>
+            <li class="guide-lists" aria-label="Click or press to display details">
+              <button class="check" aria-label="Click to check this guide" aria-checked="false" role="checkbox">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                   class="checkbox" aria-hidden="true">
                   <circle cx="12" cy="12" r="10" stroke="#8A8A8A" stroke-width="2.08333" stroke-linecap="round"

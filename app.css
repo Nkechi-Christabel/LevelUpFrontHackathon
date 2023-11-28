@@ -153,7 +153,6 @@ button:not(.setup-guide--collapsed button):focus {
 
 .logo .big-screen {
   display: none;
-  /* flex: 1; */
 }
 
 .search-container {
@@ -164,8 +163,6 @@ button:not(.setup-guide--collapsed button):focus {
 }
 
 input.search-bar {
-  display: flex;
-  align-items: center;
   height: 32px;
   padding: 8px 35px;
   width: 100%;
@@ -307,6 +304,7 @@ button.store-name-wrapper .initials {
   flex: 0 0 100%;
   font-weight: 600;
   padding: 16px;
+  color: #616161;
 }
 
 .notification-dropdown .text,
@@ -315,11 +313,9 @@ button.store-name-wrapper .initials {
 }
 
 .profileMenu-list {
-  /* display: flex;
-  flex-direction: column; */
-  /* align-items: flex-start; */
-
-  width: 320px;
+  display: flex;
+  flex-direction: column;
+  min-width: 250px;
   padding: 6px 0px;
   gap: 4px;
   background: #ffffff;
@@ -339,16 +335,16 @@ button.store-name-wrapper .initials {
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.05);
 }
 
+.profileMenu-list li {
+  margin: 0 3px;
+}
+
 .profileMenu-list .initials {
   font-size: 10.5px;
   font-weight: 500;
   padding: 9.625px 5.875px 10.375px 6.125px;
   margin: 0 4px 0 0;
   outline: none;
-}
-
-.profileMenu-list li {
-  margin: 3px;
 }
 
 .profileMenu-list li a {
@@ -489,7 +485,7 @@ button.store-name-wrapper .initials {
 
 .setup-guide .open,
 .setup-guide .close {
-  padding: 4px;
+  padding: 0 4px;
   margin-top: -10px;
   border-radius: 6px;
   background: #ffffff;
@@ -541,6 +537,7 @@ button.open:focus svg {
   padding: 8px 0;
   gap: 5px;
   border-radius: 10px;
+  height: 100%;
 }
 
 .guide-lists-content {
@@ -556,16 +553,14 @@ button.open:focus svg {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 40px;
 }
 
 .guide-lists h5 {
-  display: inline-flex;
-  justify-content: center;
   font-weight: 500;
 }
 
 .guide-lists--hidden p {
-  width: 85%;
   font-weight: 500;
   color: #616161;
   line-height: 140%;
@@ -636,7 +631,8 @@ button.open:focus svg {
 .guide-lists--btn,
 .product-btns {
   display: flex;
-  align-items: baseline;
+  align-items: end;
+  align-self: flex-end;
   margin-top: 15px;
   font-size: 12px;
   font-weight: 600px;
@@ -784,11 +780,16 @@ button.open:focus svg {
   }
 
   .guide-lists--hidden img {
+    position: relative;
+    top: -15px;
     display: block;
     width: 156.145px;
     height: 120px;
     flex-shrink: 0;
-    margin-top: -12px;
+  }
+
+  .guides li:last-child .guide-lists--hidden p {
+    padding: 10px 0 0 0;
   }
 }
 
@@ -824,5 +825,10 @@ button.open:focus svg {
 
   .guide-lists--hidden {
     padding: 17px 0 0 0;
+  }
+
+  .guide-lists--btn,
+  .product-btns {
+    margin: 15px 0;
   }
 }

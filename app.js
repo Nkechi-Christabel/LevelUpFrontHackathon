@@ -3,7 +3,6 @@ const notificationDropdownPanel = document.querySelector(
   ".notification-dropdown"
 );
 const profileMenuTrigger = document.querySelector(".store-name-wrapper");
-const initials = profileMenuTrigger.querySelector(".initials");
 const profileMenu = document.querySelector(".profileMenu-list");
 const cancel = document.querySelector(".cancel");
 const selectPlan = document.querySelector(".select-plan");
@@ -88,6 +87,12 @@ profileMenuTrigger.addEventListener("keydown", (e) => {
   }
 });
 
+// Event listener to handle keyboard navigation
+profileMenu.addEventListener("keydown", (e) => {
+  removeActiveClass(links);
+  handleKeyboardNavigation(links, null, e);
+});
+
 //Hanlde keyboard navigation
 function handleKeyboardNavigation(lists, functionName, e) {
   let currentIndex = Array.from(lists).indexOf(document.activeElement);
@@ -116,10 +121,20 @@ function handleKeyboardNavigation(lists, functionName, e) {
   }
 }
 
-// Event listener to handle keyboard navigation
-profileMenu.addEventListener("keydown", (e) => {
-  removeActiveClass(links);
-  handleKeyboardNavigation(links, null, e);
+// Open guide card click event
+openGuides.addEventListener("click", () => {
+  handleGuideDisplay();
+  guideLists[0].focus();
+  addActiveClass(guideLists[0]);
+});
+
+// Open guide card keypress event
+openGuides.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    handleGuideDisplay();
+    guideLists[0].focus();
+    // addActiveClass(guideLists[0]);
+  }
 });
 
 // Function to handle hidden guide steps
@@ -165,22 +180,6 @@ function handleHideGuides() {
   openGuides.classList.remove("hidden");
   guides.classList.add("hidden");
 }
-
-// Open guide card click event
-openGuides.addEventListener("click", () => {
-  handleGuideDisplay();
-  guideLists[0].focus();
-  addActiveClass(guideLists[0]);
-});
-
-// Open guide card keypress event
-openGuides.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") {
-    handleGuideDisplay();
-    guideLists[0].focus();
-    addActiveClass(guideLists[0]);
-  }
-});
 
 // Close guide card
 closeGuides.addEventListener("click", handleHideGuides);
@@ -233,6 +232,8 @@ function handleChecked(check, e) {
   const guide = listItem.querySelector("h5");
   const checkboxStatus = check.querySelector(".checkbox-status");
 
+  check.classList.toggle("checked");
+  checkMark.classList.remove("hidden");
   handleProgress();
 
   function toggleElementsVisibility() {
@@ -248,12 +249,10 @@ function handleChecked(check, e) {
     }
   }
 
-  check.classList.toggle("checked");
   toggleElementsVisibility();
 
   const isChecked = check.classList.contains("checked");
   check.setAttribute("aria-checked", isChecked.toString());
-  checkboxStatus.ariaLabel = "Loading";
 
   setTimeout(() => {
     check.setAttribute(
