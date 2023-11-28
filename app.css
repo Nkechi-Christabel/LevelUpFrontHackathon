@@ -800,9 +800,9 @@ button.open:focus svg {
 }
 
 @media screen and (max-width: 640px) {
-  .header nav {
+  /* .header nav {
     padding: 12px 13px;
-  }
+  } */
 
   .search-bar {
     width: 238px;
@@ -820,7 +820,7 @@ button.open:focus svg {
   }
 
   .select-plan .cancel {
-    margin-right: 10px;
+    margin-right: 8px;
   }
 
   .guide-lists--hidden {
@@ -830,5 +830,8 @@ button.open:focus svg {
   .guide-lists--btn,
   .product-btns {
     margin: 15px 0;
+  }
+  .select-plan {
+    padding: 10px 8px 12px 16px;
   }
 }
