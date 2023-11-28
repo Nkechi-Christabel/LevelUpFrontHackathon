@@ -1,9 +1,9 @@
-const notificationTrigger = document.querySelector(".notification-bell");
+const notification = document.querySelector(".notification-bell");
 const notificationDropdownPanel = document.querySelector(
   ".notification-dropdown"
 );
-const profileMenuTrigger = document.querySelector(".store-name-wrapper");
-const initials = profileMenuTrigger.querySelector(".initials");
+const storeName = document.querySelector(".store-name-wrapper");
+const initials = storeName.querySelector(".initials");
 const profileMenu = document.querySelector(".profileMenu-list");
 const cancel = document.querySelector(".cancel");
 const selectPlan = document.querySelector(".select-plan");
@@ -11,7 +11,7 @@ const openGuides = document.querySelector(".open");
 const closeGuides = document.querySelector(".close");
 const guides = document.querySelector(".guides");
 const guideLists = document.querySelectorAll(".guide-lists");
-const links = document.querySelectorAll(".profileMenu-list li:not(.disabled)");
+const links = document.querySelectorAll(".profileMenu-lists");
 const checkMarks = document.querySelectorAll(".check");
 const body = document.querySelector(".body");
 const guideListLen = document.querySelector(".guideList-len");
@@ -49,7 +49,7 @@ function togglenotificationDropdownPanel() {
 
   const isContentHidden =
     notificationDropdownPanel.classList.contains("active");
-  notificationTrigger.setAttribute("aria-expanded", isContentHidden);
+  notification.setAttribute("aria-expanded", isContentHidden);
 }
 
 // Function to toggle profileMenu
@@ -58,71 +58,61 @@ function toggleprofileMenu() {
   profileMenu.classList.toggle("hidden");
 
   const isContentHidden = profileMenu.classList.contains("hidden");
-  profileMenuTrigger.setAttribute("aria-expanded", !isContentHidden);
-  if (!isContentHidden) {
-    links[0].focus();
-    addActiveClass(links[0]);
-  }
+  storeName.setAttribute("aria-expanded", !isContentHidden);
 }
 
 // Event listener to toggle notification panel
-notificationTrigger.addEventListener("click", togglenotificationDropdownPanel);
+notification.addEventListener("click", togglenotificationDropdownPanel);
 
 //Keyboard Event listener to toggle  notification panel
-notificationTrigger.addEventListener("keydown", (e) => {
+notification.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
     togglenotificationDropdownPanel;
   }
 });
 
 // Event listener to toggle menu list
-profileMenuTrigger.addEventListener("click", () => {
+storeName.addEventListener("click", () => {
   removeActiveClass(links);
   toggleprofileMenu();
+  links[0].focus();
+  addActiveClass(links[0]);
 });
 
 //Keyboard Event listener to toggle menu list
-profileMenuTrigger.addEventListener("keydown", (e) => {
+storeName.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
     toggleprofileMenu();
+    links[0].focus();
+    addActiveClass(links[0]);
   }
 });
-
-//Hanlde keyboard navigation
-function handleKeyboardNavigation(lists, functionName, e) {
-  let currentIndex = Array.from(lists).indexOf(document.activeElement);
-
-  if (e.key === "ArrowDown" && currentIndex < lists.length - 1) {
-    lists[currentIndex + 1].focus();
-  } else if (e.key === "ArrowUp" && currentIndex > 0) {
-    lists[currentIndex - 1].focus();
-  } else if (e.key === "ArrowRight") {
-    currentIndex = (currentIndex + 1) % lists.length;
-    lists[currentIndex].focus();
-  } else if (e.key === "ArrowLeft") {
-    currentIndex = (currentIndex - 1 + lists.length) % lists.length;
-    lists[currentIndex].focus();
-  } else if (e.key === "Home") {
-    lists[0].focus();
-  } else if (e.key === "End") {
-    lists[guideLists.length - 1].focus();
-  } else if (e.key === "Enter") {
-    if (!functionName) {
-      window.open(e.target.querySelector("a").getAttribute("href"), "_blank");
-      addActiveClass(e.target);
-    } else {
-      functionName(e.target);
-    }
-  }
-}
 
 // Event listener to handle keyboard navigation
 profileMenu.addEventListener("keydown", (e) => {
+  let currentIndex = Array.from(links).indexOf(document.activeElement);
   removeActiveClass(links);
-  handleKeyboardNavigation(links, null, e);
+  if (e.key === "ArrowDown" && currentIndex < links.length - 1) {
+    links[currentIndex + 1].focus();
+  } else if (e.key === "ArrowUp" && currentIndex > 0) {
+    links[currentIndex - 1].focus();
+  } else if (e.key === "ArrowRight") {
+    currentIndex = (currentIndex + 1) % links.length;
+    links[currentIndex].focus();
+  } else if (e.key === "ArrowLeft") {
+    currentIndex = (currentIndex - 1 + links.length) % links.length;
+    links[currentIndex].focus();
+  } else if (e.key === "Home") {
+    links[0].focus();
+  } else if (e.key === "End") {
+    links[links.length - 1].focus();
+  } else if (e.key === "Enter") {
+    window.open(e.target.querySelector("a").getAttribute("href"), "_blank");
+    addActiveClass(e.target);
+  }
 });
 
-// Function to handle hidden guide steps
+// Function to handle hidden steps
 function handleHiddenSteps(list) {
   guideLists.forEach((otherList) => {
     const otherHiddenContent = otherList.querySelector(".guide-lists--hidden");
@@ -132,14 +122,14 @@ function handleHiddenSteps(list) {
     ) {
       otherHiddenContent.classList.add("hidden");
       otherList.style.background = "";
-      otherList.querySelector("h5").style.fontWeight = "500";
+      otherList.querySelector("h5").style.fontWeight = "400";
       otherList.style.transition = "";
     }
   });
 
   list.querySelector(".guide-lists--hidden").classList.remove("hidden");
-  list.style.background = "#F3F3F3";
-  list.querySelector("h5").style.fontWeight = "600";
+  list.style.background = "#f3f3f3";
+  list.querySelector("h5").style.fontWeight = "500";
   list.style.transition = "background-color 0.3s ease-in-out";
 }
 
@@ -159,21 +149,19 @@ function handleGuideDisplay() {
   guides.classList.remove("hidden");
 }
 
-//Hides guide's steps details
 function handleHideGuides() {
   closeGuides.classList.add("hidden");
   openGuides.classList.remove("hidden");
   guides.classList.add("hidden");
 }
 
-// Open guide card click event
+// Open guide card
 openGuides.addEventListener("click", () => {
   handleGuideDisplay();
   guideLists[0].focus();
   addActiveClass(guideLists[0]);
 });
 
-// Open guide card keypress event
 openGuides.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
     handleGuideDisplay();
@@ -190,15 +178,33 @@ closeGuides.addEventListener("keydown", (e) => {
 
 // Handle click event to display guides list content
 guideLists.forEach((list) => {
-  list.addEventListener("click", (e) => {
+  list.addEventListener("click", () => {
     removeActiveClass(guideLists);
-    handleListDisplay(list, e);
+    handleListDisplay(list);
   });
 
   // Handle keydown event to display guides list content
   list.addEventListener("keydown", (e) => {
+    let currentIndex = Array.from(guideLists).indexOf(document.activeElement);
     removeActiveClass(guideLists);
-    handleKeyboardNavigation(guideLists, handleListDisplay, e);
+
+    if (e.key === "ArrowDown" && currentIndex < guideLists.length - 1) {
+      guideLists[currentIndex + 1].focus();
+    } else if (e.key === "ArrowUp" && currentIndex > 0) {
+      guideLists[currentIndex - 1].focus();
+    } else if (e.key === "ArrowRight") {
+      currentIndex = (currentIndex + 1) % guideLists.length;
+      guideLists[currentIndex].focus();
+    } else if (e.key === "ArrowLeft") {
+      currentIndex = (currentIndex - 1 + guideLists.length) % guideLists.length;
+      guideLists[currentIndex].focus();
+    } else if (e.key === "Home") {
+      guideLists[0].focus();
+    } else if (e.key === "End") {
+      guideLists[guideLists.length - 1].focus();
+    } else if (e.key === "Enter") {
+      handleListDisplay(list);
+    }
   });
   // Ensure the list items are focusable
   list.setAttribute("tabindex", "0");
@@ -222,17 +228,16 @@ function handleProgress() {
 function handleChecked(check, e) {
   e.preventDefault();
   e.stopPropagation();
-  removeActiveClass(guideLists);
 
   const spinner = check.querySelector(".spinner");
   const listItem = e.target.closest(".guide-lists");
   const currentIndex = Array.from(guideLists).indexOf(listItem);
   const nextListItem = guideLists[(currentIndex + 1) % guideLists.length];
-  const emptyCheckbox = check.querySelector(".checkbox");
+  const emptyCheckbox = check.firstElementChild;
   const checkMark = check.querySelector(".checked-icon");
-  const guide = listItem.querySelector("h5");
-  const checkboxStatus = check.querySelector(".checkbox-status");
+  const isChecked = check.classList.contains("checked");
 
+  checkMark.classList.toggle("hidden");
   handleProgress();
 
   function toggleElementsVisibility() {
@@ -251,22 +256,11 @@ function handleChecked(check, e) {
   check.classList.toggle("checked");
   toggleElementsVisibility();
 
-  const isChecked = check.classList.contains("checked");
-  check.setAttribute("aria-checked", isChecked.toString());
-  checkboxStatus.ariaLabel = "Loading";
-
   setTimeout(() => {
-    check.setAttribute(
-      "aria-label",
-      isChecked
-        ? `${guide.innerHTML} successfully checked`
-        : `${guide.innerHTML} is unchecked`
-    );
-
     spinner.classList.add("hidden");
-    emptyCheckbox.classList.toggle("hidden", isChecked);
-    checkMark.classList.toggle("hidden", !isChecked);
-  }, 1000);
+    emptyCheckbox.classList.toggle("hidden", !isChecked);
+    checkMark.classList.toggle("hidden", isChecked);
+  }, 150);
 }
 
 //Click even for the circle checkboxes
@@ -277,8 +271,7 @@ checkMarks.forEach((check) => {
 
   //Keydown event for the circle checkboxes
   check.addEventListener("keydown", (e) => {
-    handleKeyboardNavigation(checkMarks, handleChecked, e);
-    // handleChecked(check, e);
+    if (e.key === "Enter") handleChecked(check, e);
   });
 
   check.setAttribute("tabindex", "0");
@@ -287,23 +280,23 @@ checkMarks.forEach((check) => {
 // Close notification panel and menu-list at the press of the escape key
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
+    links[0].blur();
     notificationDropdownPanel.classList.remove("active");
-    notificationTrigger.setAttribute("aria-expanded", "false");
     profileMenu.classList.add("hidden");
-    profileMenu.setAttribute("aria-expanded", "false");
 
-    if (document.activeElement.classList.contains("all-stores")) {
-      links[0].blur();
-      profileMenuTrigger.focus();
-      if (document.activeElement === document.body)
-        profileMenuTrigger.children[1].focus();
+    if (document.activeElement.classList.contains("body")) {
+      if (window.matchMedia("(max-width: 912px)")) {
+        storeName.querySelector(".initials").focus();
+      }
+
+      storeName.focus();
     }
   }
 });
 
 // Close notification panel and menu-list on click outside
 document.addEventListener("click", (e) => {
-  if (!e.target.closest(".notification-wrapper"))
+  if (!e.target.closest(".notification"))
     notificationDropdownPanel.classList.remove("active");
 
   if (!e.target.closest(".store")) profileMenu.classList.add("hidden");
