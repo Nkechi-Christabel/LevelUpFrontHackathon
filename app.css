@@ -167,7 +167,7 @@ input.search-bar {
   padding: 8px 35px;
   width: 100%;
   border-radius: 8px;
-  border: #616161;
+  border: 1px solid #616161;
   background: #303030;
   outline: none;
 }
