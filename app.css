@@ -495,7 +495,7 @@ button.store-name-wrapper .initials {
 .setup-guide .open,
 .setup-guide .close {
   padding: 0 4px;
-  margin-top: -10px;
+  margin-top: -8px;
   border-radius: 6px;
   background: #ffffff;
   cursor: pointer;
