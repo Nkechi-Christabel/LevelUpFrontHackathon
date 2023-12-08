@@ -738,10 +738,8 @@ button.open:focus svg {
     align-items: flex-start;
   }
 
-  .logo img.big-screen {
+  .logo .big-screen {
     display: block;
-    width: 104.868px;
-    height: 30px;
   }
 
   .logo .small-screen {
@@ -827,11 +825,6 @@ button.open:focus svg {
 
   .search-bar {
     width: 238px;
-  }
-
-  .logo img.small-screen {
-    width: 32px;
-    height: 32px;
   }
 
   .select-plan .selectBtn-container {
