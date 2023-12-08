@@ -167,7 +167,7 @@ input.search-bar {
   padding: 8px 35px;
   width: 100%;
   border-radius: 8px;
-  border: #616161;
+  border: 1px solid #616161;
   background: #303030;
   outline: none;
 }
@@ -460,7 +460,7 @@ button.store-name-wrapper .initials {
   display: flex;
   flex-direction: column;
   padding: 8px;
-  gap: 16px;
+  gap: 10px;
   border: 1px solid #dbdbdb;
   background: #fff;
   box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.05);
@@ -495,7 +495,7 @@ button.store-name-wrapper .initials {
 .setup-guide .open,
 .setup-guide .close {
   padding: 0 4px;
-  margin-top: -8px;
+  /* margin-top: -8px; */
   border-radius: 6px;
   background: #ffffff;
   cursor: pointer;
@@ -586,24 +586,27 @@ button.open:focus svg {
   display: flex;
   justify-content: center;
   align-items: center;
+  /* width: 25px;
+  height: 25px; */
+  /* padding: 2px; */
   border: none;
   border-radius: 4px;
   background-color: transparent;
   transition: all 500ms ease-in;
 }
 
-.check:focus {
-  outline-offset: 2px;
+.guide-lists .check:focus {
+  outline: none;
 }
 
 .checked-icon {
   animation: zoom-in-spin 300ms linear;
 }
 
-.check .checked-icon,
-.check .spinner {
+.check svg {
   width: 24px;
   height: 24px;
+  flex-shrink: 0;
 }
 
 .spinner {

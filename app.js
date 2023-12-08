@@ -158,7 +158,7 @@ function handleHiddenSteps(list) {
   list.querySelector(".guide-lists--hidden").classList.remove("hidden");
   list.style.background = "#F3F3F3";
   list.querySelector("h5").style.fontWeight = "600";
-  list.style.transition = "background-color 0.3s ease-in-out";
+  list.style.transition = "background-color 0.2s ease-in-out";
 }
 
 // Function to display and hide guide steps/content
